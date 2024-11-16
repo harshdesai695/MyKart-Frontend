@@ -1,0 +1,37 @@
+.Profile-Page {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    height: 90dvh;
+    width: 90dvw;
+}
+
+
+.Profile-details {
+    height: auto;
+    width: 500px;
+    border: 1px solid bisque;
+    background-color: #222222;
+}
+
+.Profile-detail-item {
+    margin: 15px 15px 15px 15px;
+    font-size: x-large;
+    display: flex;
+    flex-direction: row;
+}
+
+.Profile-detail-item:hover .edit-icon {
+    display: block;
+}
+
+.edit-icon {
+    display: none;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.edit-icon:hover {
+    fill: aqua;
+}

@@ -1,0 +1,161 @@
+.Image-Card {
+    width: 70%;
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+}
+
+.Image-Card .ImageBox {
+    width: 70%;
+    height: 70%;
+}
+
+.Image-Card .ImageBox img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.5s ease-in-out;
+}
+
+.Image-Card::after {
+    content: "";
+    position: absolute;
+    width: 70%;
+    height: 70%;
+    inset: 0;
+    border: 1px solid #FF4655;
+    /* border-radius: inherit; */
+    opacity: 0;
+    transition: 0.4s ease-in-out;
+}
+
+.Image-Card:hover img {
+    filter: grayscale(1) brightness(0.4);
+}
+
+.Image-Card:hover::after {
+    opacity: 1;
+    /* inset: 1px; */
+}
+
+.Image-Card .ImageContent {
+    position: absolute;
+    top: 30%;
+    left: 35%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+}
+
+.Image-Card:hover .ImageContent {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+}
+
+.Image-Card .ImageContent h2 {
+    font-size: 1.5em;
+    color: rgb(255, 255, 255);
+    margin: 0;
+}
+
+.Image-Card .ImageContent p {
+    font-size: 1em;
+    color: white;
+    margin-top: 8px;
+    font-weight: 600;
+}
+
+/* WishListCard */
+
+.WishListCard {
+    display: flex;
+    flex-direction: row;
+    margin: 15px 10px 15px 10px;
+    height: 100%;
+    width: 95%;
+    background-color: #222222;
+    color: #FFFFFF;
+    border: 1px solid #444444;
+    transition: 0.4s ease-in-out;
+}
+
+.WishListCard:hover {
+    border: 1px solid #FF4655;
+    transition: 0.4s ease-in-out;
+}
+
+
+.WishListCardImage {
+    margin: 5px;
+    height: 100px;
+    width: 125px;
+}
+
+.WishListCard img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+
+.WishListCardDetails {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-left: 10px;
+    width: 100%;
+}
+
+.WishListName {
+    color: #FF6347;
+    margin-top: 17px;
+}
+
+.WishListCost {
+    margin-bottom: 17px;
+}
+
+/* CartList */
+
+.CartListCard {
+    display: flex;
+    flex-direction: row;
+    margin: 15px 10px 15px 10px;
+    height: 100%;
+    width: 95%;
+    background-color: #222222;
+    color: #FFFFFF;
+    border: 1px solid #444444;
+    transition: 0.4s ease-in-out;
+}
+
+.CartListCardImage {
+    margin: 5px;
+    height: 100px;
+    width: 125px;
+}
+
+.CartListCard img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+
+.CartListtCardDetails {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-left: 10px;
+    width: 100%;
+}
+
+.CartListName {
+    color: #FF6347;
+    margin-top: 17px;
+}
+
+.CartListCost {
+    margin-bottom: 17px;
+}

@@ -1,0 +1,23 @@
+.WishListPage {
+    height: 100%;
+    width: 100%;
+}
+
+.WishListContainer {
+    height: fit-content;
+    width: 50%;
+    margin-top: 3%;
+    background-color: #524e4e;
+    padding: 7px;
+    border-radius: 3px;
+    /* border: 2px solid whitesmoke; */
+}
+
+.WishListHeader {
+    font-size: 25px;
+    padding: 12px;
+    border-bottom: 1px solid whitesmoke;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    margin: 5px 5px 5px 5px;
+}
