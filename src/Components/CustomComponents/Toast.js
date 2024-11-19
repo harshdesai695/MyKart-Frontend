@@ -2,7 +2,7 @@ import { Bounce, toast } from "react-toastify";
 
 const defaultConfig = {
   position: "top-right",
-  autoClose: 2000,
+  autoClose: 1500,
   hideProgressBar: false,
   closeOnClick: true,
   pauseOnHover: true,
@@ -17,5 +17,5 @@ export const toastSuccess = (text) => toast.success(text, { ...defaultConfig });
 export const toastError = (text) =>
   toast.error(text, {
     ...defaultConfig,
-    theme: "light",
+    theme: "colored",
   });
