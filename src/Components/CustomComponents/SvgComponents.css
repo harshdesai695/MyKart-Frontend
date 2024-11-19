@@ -1,0 +1,9 @@
+.DeleteIcon {
+  stroke: white;
+  transition: transform 0.3s ease, stroke 0.3s ease;
+}
+
+.DeleteIcon:hover {
+  stroke: red;
+  transform: scale(1.1);
+}
