@@ -1,405 +1,413 @@
 /* From Uiverse.io by faizanullah1999 */
 .button-borders {
-    margin: 7px;
-    position: relative;
-    width: 100%;
-    /* Make the button-borders take full width of the parent */
-    height: 100%;
-    /* Make the button-borders take full height of the parent */
+  margin: 7px;
+  position: relative;
+  width: 100%;
+  /* Make the button-borders take full width of the parent */
+  height: 100%;
+  /* Make the button-borders take full height of the parent */
 }
 
 .button-borders:before,
 .button-borders:after {
-    content: "";
-    position: absolute;
-    width: calc(100% + 0.5em);
-    left: -0.3em;
-    border: 1px solid #0E1822;
+  content: "";
+  position: absolute;
+  width: calc(100% + 0.5em);
+  left: -0.3em;
+  border: 1px solid #0e1822;
 }
 
 .button-borders:before {
-    height: 50%;
-    top: -0.3em;
-    border-bottom: 0px;
+  height: 50%;
+  top: -0.3em;
+  border-bottom: 0px;
 }
 
 .button-borders:after {
-    height: 50%;
-    bottom: -0.3em;
-    border-top: 0px;
-    z-index: 0;
+  height: 50%;
+  bottom: -0.3em;
+  border-top: 0px;
+  z-index: 0;
 }
 
 /* Button */
 .primary-button {
-    /* font-family: 'Ropa Sans', sans-serif; */
-    color: white;
-    cursor: pointer;
-    font-size: 13px;
-    /* Use relative unit for font size */
-    font-weight: bold;
-    letter-spacing: 0.05rem;
-    border: 1px solid #0E1822;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 531.28 200'%3E%3Cdefs%3E%3Cstyle%3E .shape %7B fill: %23FF4655 %7D %3C/style%3E%3C/defs%3E%3Cg id='Layer_2' data-name='Layer 2'%3E%3Cg id='Layer_1-2' data-name='Layer 1'%3E%3Cpolygon class='shape' points='415.81 200 0 200 115.47 0 531.28 0 415.81 200' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E%0A");
-    background-color: #0E1822;
-    background-size: 200%;
-    background-position: 200%;
-    background-repeat: no-repeat;
-    transition: 0.3s ease-in-out;
-    transition-property: background-position, border, color;
-    position: relative;
-    z-index: 1;
+  /* font-family: 'Ropa Sans', sans-serif; */
+  color: white;
+  cursor: pointer;
+  font-size: 13px;
+  /* Use relative unit for font size */
+  font-weight: bold;
+  letter-spacing: 0.05rem;
+  border: 1px solid #0e1822;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 531.28 200'%3E%3Cdefs%3E%3Cstyle%3E .shape %7B fill: %23FF4655 %7D %3C/style%3E%3C/defs%3E%3Cg id='Layer_2' data-name='Layer 2'%3E%3Cg id='Layer_1-2' data-name='Layer 1'%3E%3Cpolygon class='shape' points='415.81 200 0 200 115.47 0 531.28 0 415.81 200' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E%0A");
+  background-color: #0e1822;
+  background-size: 200%;
+  background-position: 200%;
+  background-repeat: no-repeat;
+  transition: 0.3s ease-in-out;
+  transition-property: background-position, border, color;
+  position: relative;
+  z-index: 1;
 
-    width: 100%;
-    /* Set width to 100% of parent container */
-    height: 100%;
-    /* Set height to 100% of parent container */
-    padding: 7px;
-    /* Remove fixed padding */
-    display: flex;
-    align-items: center;
-    /* Center content vertically */
-    justify-content: center;
-    /* Center content horizontally */
+  width: 100%;
+  /* Set width to 100% of parent container */
+  height: 100%;
+  /* Set height to 100% of parent container */
+  padding: 7px;
+  /* Remove fixed padding */
+  display: flex;
+  align-items: center;
+  /* Center content vertically */
+  justify-content: center;
+  /* Center content horizontally */
 }
 
 .primary-button:hover {
-    border: 1px solid #FF4655;
-    color: white;
-    background-position: 40%;
+  border: 1px solid #ff4655;
+  color: white;
+  background-position: 40%;
 }
 
 .primary-button:before {
-    content: "";
-    position: absolute;
-    background-color: #0E1822;
-    width: 0.2rem;
-    height: 0.2rem;
-    top: -1px;
-    left: -1px;
-    transition: background-color 0.15s ease-in-out;
+  content: "";
+  position: absolute;
+  background-color: #0e1822;
+  width: 0.2rem;
+  height: 0.2rem;
+  top: -1px;
+  left: -1px;
+  transition: background-color 0.15s ease-in-out;
 }
 
 .primary-button:hover:before {
-    background-color: white;
+  background-color: white;
 }
 
 .primary-button:hover:after {
-    background-color: white;
+  background-color: white;
 }
 
 .primary-button:after {
-    content: "";
-    position: absolute;
-    background-color: #FF4655;
-    width: 0.3rem;
-    height: 0.3rem;
-    bottom: -1px;
-    right: -1px;
-    transition: background-color 0.15s ease-in-out;
+  content: "";
+  position: absolute;
+  background-color: #ff4655;
+  width: 0.3rem;
+  height: 0.3rem;
+  bottom: -1px;
+  right: -1px;
+  transition: background-color 0.15s ease-in-out;
 }
-
-
 
 /* wishListButton */
-.btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 25px;
-    height: 25px;
-    border-radius: 10px;
-    cursor: pointer;
-    border: none;
-    background-color: transparent;
-    position: relative;
+.WishList {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 25px;
+  height: 25px;
+  border-radius: 10px;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  position: relative;
 }
 
-.btn::after {
-    /* content: "WishList"; */
-    width: fit-content;
-    height: fit-content;
-    position: absolute;
-    font-size: 10px;
-    color: #FF4655;
-    opacity: 0;
-    visibility: hidden;
-    transition: 0.2s linear;
-    top: 115%;
+.WishList::after {
+  /* content: "WishList"; */
+  width: fit-content;
+  height: fit-content;
+  position: absolute;
+  font-size: 10px;
+  color: #ff4655;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.2s linear;
+  top: 115%;
 }
 
-.icon {
-    width: 25px;
-    height: 25px;
-    transition: 0.2s linear;
+.WishList .icon {
+  width: 25px;
+  height: 25px;
+  transition: 0.2s linear;
 }
 
-.icon path {
-    fill: white;
-    transition: 0.2s linear;
+.WishList.icon path {
+  fill: white;
+  transition: 0.2s linear;
 }
 
-.btn:hover .icon {
-    transform: scale(1.2);
+.WishList:hover .icon {
+  transform: scale(1.2);
 }
 
-.btn:hover .icon path {
-    fill: #FF4655;
+.WishList:hover .icon path {
+  fill: #ff4655;
 }
 
-.btn:hover::after {
-    visibility: visible;
-    opacity: 1;
-    top: 105%;
+.WishList:hover::after {
+  visibility: visible;
+  opacity: 1;
+  top: 105%;
 }
 
 /*BuyNow*/
 
 .fancy {
-    background-color: #0E1822;
-    border: 1px solid #000;
-    border-radius: 0;
-    box-sizing: border-box;
-    color: #fff;
-    cursor: pointer;
-    display: inline-block;
-    /* float: right; */
-    font-weight: 700;
-    letter-spacing: 0.05em;
-    margin: 0;
-    outline: none;
-    overflow: visible;
-    padding: 1.25em 2em;
-    position: relative;
-    text-align: center;
-    text-decoration: none;
-    text-transform: none;
-    transition: all 0.3s ease-in-out;
-    user-select: none;
-    font-size: 9px;
+  background-color: #0e1822;
+  border: 1px solid #000;
+  border-radius: 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  /* float: right; */
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  margin: 0;
+  outline: none;
+  overflow: visible;
+  padding: 1.25em 2em;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  text-transform: none;
+  transition: all 0.3s ease-in-out;
+  user-select: none;
+  font-size: 9px;
 }
 
 .fancy::before {
-    content: " ";
-    width: 0.5625rem;
-    height: 2px;
-    background: #FF4655;
-    top: 50%;
-    left: 1.5em;
-    position: absolute;
-    transform: translateY(-50%);
-    transform-origin: center;
-    transition: background 0.3s linear, width 0.3s linear;
+  content: " ";
+  width: 0.5625rem;
+  height: 2px;
+  background: #ff4655;
+  top: 50%;
+  left: 1.5em;
+  position: absolute;
+  transform: translateY(-50%);
+  transform-origin: center;
+  transition: background 0.3s linear, width 0.3s linear;
 }
 
 .fancy .text {
-    font-size: 1.125em;
-    line-height: 1.33333em;
-    padding-left: 1.5em;
-    display: block;
-    text-align: left;
-    transition: all 0.3s ease-in-out;
-    text-transform: uppercase;
-    text-decoration: none;
-    color: whitesmoke;
+  font-size: 1.125em;
+  line-height: 1.33333em;
+  padding-left: 1.5em;
+  display: block;
+  text-align: left;
+  transition: all 0.3s ease-in-out;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: whitesmoke;
 }
 
 .fancy .top-key {
-    height: 2px;
-    width: 1.5625rem;
-    top: -2px;
-    left: 0.625rem;
-    position: absolute;
-    background: #e8e8e8;
-    transition: width 0.5s ease-out, left 0.3s ease-out;
+  height: 2px;
+  width: 1.5625rem;
+  top: -2px;
+  left: 0.625rem;
+  position: absolute;
+  background: #e8e8e8;
+  transition: width 0.5s ease-out, left 0.3s ease-out;
 }
 
 .fancy .bottom-key-1 {
-    height: 2px;
-    width: 1.5625rem;
-    right: 1.875rem;
-    bottom: -2px;
-    position: absolute;
-    background: #e8e8e8;
-    transition: width 0.5s ease-out, right 0.3s ease-out;
+  height: 2px;
+  width: 1.5625rem;
+  right: 1.875rem;
+  bottom: -2px;
+  position: absolute;
+  background: #e8e8e8;
+  transition: width 0.5s ease-out, right 0.3s ease-out;
 }
 
 .fancy .bottom-key-2 {
-    height: 2px;
-    width: 0.625rem;
-    right: 0.625rem;
-    bottom: -2px;
-    position: absolute;
-    background: #e8e8e8;
-    transition: width 0.5s ease-out, right 0.3s ease-out;
+  height: 2px;
+  width: 0.625rem;
+  right: 0.625rem;
+  bottom: -2px;
+  position: absolute;
+  background: #e8e8e8;
+  transition: width 0.5s ease-out, right 0.3s ease-out;
 }
 
 .fancy:hover {
-    color: white;
-    background: black;
+  color: white;
+  background: black;
 }
 
 .fancy:hover::before {
-    width: 0.9375rem;
-    background: white;
+  width: 0.9375rem;
+  background: white;
 }
 
 .fancy:hover .text {
-    color: #FF4655;
-    padding-left: 1.5em;
+  color: #ff4655;
+  padding-left: 1.5em;
 }
 
 .fancy:hover .top-key {
-    left: -2px;
-    width: 0px;
+  left: -2px;
+  width: 0px;
 }
 
 .fancy:hover .bottom-key-1,
 .fancy:hover .bottom-key-2 {
-    right: 0;
-    width: 0;
+  right: 0;
+  width: 0;
 }
-
 
 /* dropDownButton */
 
 .menu {
-    font-size: 16px;
-    line-height: 1.6;
-    color: #ffffff;
-    width: fit-content;
-    display: flex;
-    list-style: none;
-    font-weight: 400;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #ffffff;
+  width: fit-content;
+  display: flex;
+  list-style: none;
+  font-weight: 400;
 }
 
 .menu .link {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    padding: 12px 36px;
-    border-radius: 16px;
-    overflow: hidden;
-    transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
-    cursor: pointer;
-    /* updated to make it more button-like */
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 12px 36px;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+  cursor: pointer;
+  /* updated to make it more button-like */
 }
 
 .menu .link::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #FF4655;
-    z-index: -1;
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #ff4655;
+  z-index: -1;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.48s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .menu .link svg {
-    width: 20px;
-    height: 20px;
-    fill: #000000;
-    transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+  width: 20px;
+  height: 20px;
+  fill: #000000;
+  transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .menu .item {
-    position: relative;
+  position: relative;
 }
 
 .menu .item .submenu {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: absolute;
-    top: 100%;
-    border-radius: 0 0 16px 16px;
-    left: 0;
-    width: 130%;
-    overflow: hidden;
-    border: 1px solid #cccccc;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-12px);
-    transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
-    z-index: 1;
-    pointer-events: none;
-    list-style: none;
-    background: hsl(0, 0%, 6%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  top: 100%;
+  border-radius: 0 0 16px 16px;
+  left: 0;
+  width: 130%;
+  overflow: hidden;
+  border: 1px solid #cccccc;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-12px);
+  transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+  z-index: 1;
+  pointer-events: none;
+  list-style: none;
+  background: hsl(0, 0%, 6%);
 }
 
 .menu .item:hover .submenu {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-    pointer-events: auto;
-    border-top: transparent;
-    border-color: #FF4655;
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+  border-top: transparent;
+  border-color: #ff4655;
 }
 
 .menu .item:hover .link {
-    color: #ffffff;
-    border-radius: 16px 16px 0 0;
+  color: #ffffff;
+  border-radius: 16px 16px 0 0;
 }
 
 .menu .item:hover .link::after {
-    transform: scaleX(1);
-    transform-origin: right;
+  transform: scaleX(1);
+  transform-origin: right;
 }
 
 .menu .item:hover .link svg {
-    fill: #FF4655;
-    /* transform: rotate(-180deg); */
+  fill: #ff4655;
+  /* transform: rotate(-180deg); */
 }
 
 .submenu .submenu-item {
-    width: 100%;
-    transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+  width: 100%;
+  transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .submenu .submenu-link {
-    display: block;
-    padding: 12px 24px;
-    width: 100%;
-    position: relative;
-    text-align: center;
-    background: none;
-    /* reset button default styles */
-    border: none;
-    font: inherit;
-    color: inherit;
-    cursor: pointer;
-    transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+  display: block;
+  padding: 12px 24px;
+  width: 100%;
+  position: relative;
+  text-align: center;
+  background: none;
+  /* reset button default styles */
+  border: none;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .submenu .submenu-item:last-child .submenu-link {
-    border-bottom: none;
+  border-bottom: none;
 }
 
 .submenu .submenu-link::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    transform: scaleX(0);
-    width: 100%;
-    height: 100%;
-    background-color: #FF4655;
-    z-index: -1;
-    transform-origin: left;
-    transition: transform 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: scaleX(0);
+  width: 100%;
+  height: 100%;
+  background-color: #ff4655;
+  z-index: -1;
+  transform-origin: left;
+  transition: transform 0.48s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .submenu .submenu-link:hover::before {
-    transform: scaleX(1);
-    transform-origin: right;
+  transform: scaleX(1);
+  transform-origin: right;
 }
 
 .submenu .submenu-link:hover {
-    color: #ffffff;
+  color: #ffffff;
+}
+
+/*Delete*/
+
+.btn {
+  width: 25px;
+  height: 25px;
+  border-radius: 10px;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
 }
