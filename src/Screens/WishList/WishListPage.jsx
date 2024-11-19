@@ -4,6 +4,8 @@ import { AuthContext } from "../../Auth/AuthProvider";
 import { getWishList } from "../../Controller/UserActivityController";
 import { getProduct } from "../../Controller/ProductController";
 import { WishListCard } from "../../Components/CustomComponents/Cards";
+import { deleteFromWishList } from "../../Controller/UserActivityController";
+import { toastSuccess } from "../../Components/CustomComponents/Toast";
 
 const WishListPage = () => {
   const { userId } = useContext(AuthContext);
@@ -12,7 +14,7 @@ const WishListPage = () => {
 
   useEffect(() => {
     fetchWishList();
-  });
+  }, [wishList]);
 
   const fetchWishList = async () => {
     const response = await getWishList(userId);
@@ -37,6 +39,16 @@ const WishListPage = () => {
     }
   };
 
+  
+  const onDeleteProduct = async (productId) => {
+    try {
+      let response = deleteFromWishList(userId, productId);
+      if (response.status === 200) {
+        toastSuccess("Product Removed From WishList");
+      }
+    } catch (error) {}
+  };
+
   return (
     <center>
       <div className="WishListPage">
@@ -47,7 +59,10 @@ const WishListPage = () => {
             {wishList.length !== 0 ? (
               wishList.map((item) => (
                 <div key={item.productId}>
-                  <WishListCard product={item} />
+                  <WishListCard
+                    product={item}
+                    onDeleteIconClick={() => onDeleteProduct(item.productId)}
+                  />
                 </div>
               ))
             ) : (
