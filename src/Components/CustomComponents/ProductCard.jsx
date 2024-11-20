@@ -8,33 +8,42 @@ import {
 } from "../../Controller/UserActivityController";
 import StarRating from "./Rating";
 import { toastError, toastSuccess } from "./Toast";
+import { useNavigate } from "react-router-dom";
+import { isJsonObject } from "../../Function/GenericFunctions";
 
 export const ProductCard = ({ onclick, product }) => {
   const { userId } = useContext(AuthContext);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isHovering, setIsHovering] = useState(false);
+  const navigate = useNavigate();
 
   const onBuyButtonclick = () => {
-    console.log("Buy:" + product.productId);
+    // console.log("Buy:" + product.productId);
   };
 
-  const onAddToCartButtonClick = () => {
+  const onAddToCartButtonClick = async () => {
     if (userId == null) {
-      window.alert("Please Login/Register to Add Product to Cart");
+      toastError("Please Login/Register to Add Products to Cart");
     } else {
-      addToCartList(userId, product.productId);
-      console.log("Product_id:" + product.productId);
+      let response = await addToCartList(userId, product.productId);
+      if (!isJsonObject(response.data)) {
+        toastError(response.data);
+      } else if (response.status === 200) {
+        toastSuccess("Product added to Cart");
+      }
     }
   };
 
   const onWishListClick = async () => {
     if (userId == null) {
-      window.alert("Please Login/Register to WishList Your Product");
+      toastError("Please Login/Register to WishList Your Product");
     } else {
-      toastSuccess("Product added to wishlist");
-      toastError("Productssssssssssssss added to wishlist");
-      addToWithList(userId, product.productId);
-      console.log("Product_id:" + product.productId);
+      let response = await addToWithList(userId, product.productId);
+      if (!isJsonObject(response.data)) {
+        toastError(response.data);
+      } else if (response.status === 200) {
+        toastSuccess("Product added to wishlist");
+      }
     }
   };
 
@@ -56,15 +65,24 @@ export const ProductCard = ({ onclick, product }) => {
     setCurrentImageIndex(0); // Reset to the first image
   };
 
+  const onProductCardClick = () => {
+    navigate("/ProductPage", { state: { productData: product } });
+  };
+
   return (
-    <div className="Product-Container">
+    <div className="Product-Container" onClick={onProductCardClick}>
       <div
         className="Image-Container"
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
         <div className="wishlistButton">
-          <WishList onClick={onWishListClick} />
+          <WishList
+            onClick={(event) => {
+              event.stopPropagation(); // Prevent click event from propagating to the parent
+              onWishListClick();
+            }}
+          />
         </div>
         <img
           src={product.productImageUrl[currentImageIndex]}
@@ -94,10 +112,19 @@ export const ProductCard = ({ onclick, product }) => {
         </div>
       </div>
       <div className="Button-Container">
-        <ProductCardButton lable={"Buy"} onClick={onBuyButtonclick} />
+        <ProductCardButton
+          lable={"Buy"}
+          onClick={(event) => {
+            event.stopPropagation(); // Prevent click event from propagating to the parent
+            onBuyButtonclick();
+          }}
+        />
         <ProductCardButton
           lable={"Add To Cart"}
-          onClick={onAddToCartButtonClick}
+          onClick={(event) => {
+            event.stopPropagation(); // Prevent click event from propagating to the parent
+            onAddToCartButtonClick();
+          }}
         />
       </div>
     </div>

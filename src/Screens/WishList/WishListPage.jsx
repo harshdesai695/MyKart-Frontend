@@ -6,12 +6,13 @@ import { getProduct } from "../../Controller/ProductController";
 import { WishListCard } from "../../Components/CustomComponents/Cards";
 import { deleteFromWishList } from "../../Controller/UserActivityController";
 import { toastSuccess } from "../../Components/CustomComponents/Toast";
+import { useNavigate } from "react-router-dom";
 
 const WishListPage = () => {
   const { userId } = useContext(AuthContext);
   const [wishList, setWishList] = useState([]);
   const [wishListLength, setWishListLength] = useState(0);
-
+  const navigate = useNavigate();
   useEffect(() => {
     fetchWishList();
   }, [wishList]);
@@ -39,7 +40,6 @@ const WishListPage = () => {
     }
   };
 
-  
   const onDeleteProduct = async (productId) => {
     try {
       let response = deleteFromWishList(userId, productId);
@@ -47,6 +47,10 @@ const WishListPage = () => {
         toastSuccess("Product Removed From WishList");
       }
     } catch (error) {}
+  };
+
+  const onProductCardClick = (product) => {
+    navigate("/ProductPage", { state: { productData: product } });
   };
 
   return (
@@ -58,7 +62,10 @@ const WishListPage = () => {
           <div className="WishListList">
             {wishList.length !== 0 ? (
               wishList.map((item) => (
-                <div key={item.productId}>
+                <div
+                  key={item.productId}
+                  onClick={() => onProductCardClick(item)}
+                >
                   <WishListCard
                     product={item}
                     onDeleteIconClick={() => onDeleteProduct(item.productId)}
