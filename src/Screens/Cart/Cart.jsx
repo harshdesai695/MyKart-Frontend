@@ -9,6 +9,7 @@ import {
 } from "../../Controller/UserActivityController";
 import { PrimaryButton } from "../../Components/CustomComponents/CustomButtons";
 import { toastSuccess } from "../../Components/CustomComponents/Toast";
+import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
   const { userId } = useContext(AuthContext);
@@ -17,6 +18,7 @@ const Cart = () => {
   const [totalCartValue, setTotalCartValue] = useState(0);
   const [discount, setDiscount] = useState(0);
   const [deliveryCharges, setDeliveryCharges] = useState(0);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchcartList();
@@ -62,20 +64,31 @@ const Cart = () => {
     } catch (error) {}
   };
 
+  const onProductCardClick = (product) => {
+    navigate("/ProductPage", { state: { productData: product } });
+  };
+
   return (
     <center>
       <div className="CartListPage">
         <div className="CartListContainer">
           <div className="CartListHeader">Shopping Cart</div>
           <div className="CartListList">
-            {cartList.map((item) => (
-              <div key={item.productId}>
-                <CartListCard
-                  product={item}
-                  onDeleteIconClick={() => onDeleteProduct(item.productId)}
-                />
-              </div>
-            ))}
+            {cartList.length !== 0 ? (
+              cartList.map((item) => (
+                <div
+                  key={item.productId}
+                  onClick={() => onProductCardClick(item)}
+                >
+                  <CartListCard
+                    product={item}
+                    onDeleteIconClick={() => onDeleteProduct(item.productId)}
+                  />
+                </div>
+              ))
+            ) : (
+              <span>Cart List is Empty</span>
+            )}
           </div>
         </div>
         <div className="CartvalueConatiner">
@@ -91,12 +104,12 @@ const Cart = () => {
             </div>
             <div className="CartValueDetaisItem">
               <span>Delivery Charges</span>
-              <span>{deliveryCharges}</span>
+              <span>{cartList.length !== 0 ? deliveryCharges : 0}</span>
             </div>
             <div className="CartValueDetaisItem">
               <span>
                 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-                - - - - - - - - - - -
+                - - - - - - - -
               </span>
             </div>
             <div className="CartValueDetaisItem">
