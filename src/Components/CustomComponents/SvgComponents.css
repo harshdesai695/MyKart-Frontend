@@ -7,3 +7,27 @@
   stroke: red;
   transform: scale(1.1);
 }
+
+.WishListButton {
+  stroke: white;
+  transition: transform 0.3s ease, stroke 0.3s ease;
+}
+
+.WishListButton:hover {
+  stroke: red;
+  fill: red;
+  transform: scale(1.1);
+}
+
+.Searchicon {
+  position: absolute;
+  left: 1rem;
+  fill: #777;
+  width: 1rem;
+  height: 1rem;
+  transition: transform 0.3s ease, stroke 0.3s ease;
+}
+
+.Searchicon:hover {
+  transform: scale(1.1);
+}

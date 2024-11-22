@@ -22,7 +22,7 @@ const ProductPage = () => {
     if (userId == null) {
       toastError("Please Login/Register to Add Products to Cart");
     } else {
-      let response = await addToCartList(userId, state.product.productId);
+      let response = await addToCartList(userId, state.productData.productId);
       if (!isJsonObject(response.data)) {
         toastError(response.data);
       } else if (response.status === 200) {
@@ -84,7 +84,10 @@ const ProductPage = () => {
             <ProductCardButton lable={"Buy"} onClick={onBuyButtonClick} />
             <ProductCardButton
               lable={"Add to Cart"}
-              onClick={onAddToCartButtonClick}
+              onClick={(event) => {
+                event.stopPropagation();
+                onAddToCartButtonClick();
+              }}
             />
           </div>
 

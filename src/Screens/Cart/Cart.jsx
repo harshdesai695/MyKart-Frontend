@@ -82,7 +82,10 @@ const Cart = () => {
                 >
                   <CartListCard
                     product={item}
-                    onDeleteIconClick={() => onDeleteProduct(item.productId)}
+                    onDeleteIconClick={(event) => {
+                      event.stopPropagation();
+                      onDeleteProduct(item.productId);
+                    }}
                   />
                 </div>
               ))

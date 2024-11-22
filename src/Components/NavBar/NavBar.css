@@ -1,48 +1,49 @@
 .Navbar {
-    width: 100%;
-    height: 50px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    background-color: rgb(218, 216, 215);
-
+  width: 100%;
+  height: 70px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgb(218, 216, 215);
+  position: sticky;
+  z-index: 1000;
+  top: 0;
 }
 
-
-@media screen and (max-width:768px) {
-    .Navbar {
-        max-width: 768px;
-    }
-
+@media screen and (max-width: 768px) {
+  .Navbar {
+    max-width: 768px;
+  }
 }
 
 .prefix-container {
-    margin: 0px 0px 0px 20px;
-    /* background-color: blue; */
-    width: fit-content;
-    height: 25px;
+  margin: 0px 0px 0px 20px;
+  /* background-color: blue; */
+  width: fit-content;
+  height: 25px;
 }
 
 .middle-container {
-    /* background-color: brown; */
-    width: fit-content;
-    height: 25px;
+  /* background-color: brown; */
+  width: fit-content;
+  height: 25px;
 }
 
 .suffix-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    margin: 0px 20px 0px 0px;
-    /* background-color: aqua; */
-    width: fit-content;
-    height: 25px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 0px 20px 0px 0px;
+  /* background-color: aqua; */
+  width: fit-content;
+  height: 25px;
 }
 
 .MyKart-Logo {
-    color: black;
-    font-size: larger;
-    font-weight: 700;
+  color: black;
+  font-size: larger;
+  font-weight: 700;
+  cursor: pointer;
 }

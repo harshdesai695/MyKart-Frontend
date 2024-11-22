@@ -1,85 +1,85 @@
 /* .Home-Container {} */
 
-
-@media screen and (max-width:768px) {
-    .bestDealList {
-        flex-direction: column;
-    }
+@media screen and (max-width: 768px) {
+  .bestDealList {
+    flex-direction: column;
+  }
 }
 
 .banner {
-    background-image: url('/public/banner.png');
-    height: 500px;
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    border-bottom: 1px solid ghostwhite;
-    /* margin-top: 10px; */
+  background-image: url("/public/banner.png");
+  height: 500px;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  border-bottom: 1px solid ghostwhite;
+  /* margin-top: 10px; */
 }
 
 .banner-prefix {
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-items: start;
-    color: white;
-    font-size: 24px;
-    padding: 20px;
-    white-space: pre-wrap;
-    margin-left: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  color: white;
+  font-size: 24px;
+  padding: 20px;
+  white-space: pre-wrap;
+  margin-left: 60px;
 }
 
 .banner-prefix span:first-child {
-    font-size: 60px;
+  font-size: 60px;
 }
 
 .bestDeals {
-    margin: 40px 60px 40px 60px;
+  margin: 40px 60px 40px 60px;
 }
 
 .bestDealsSpan {
-    padding: 20px;
-    color: white;
-    font-size: 25px;
-    font-weight: 500;
-    margin-left: 100px;
+  padding: 20px;
+  color: white;
+  font-size: 25px;
+  font-weight: 500;
+  margin-left: 100px;
 }
 
 .bestDealList {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    margin-left: 40px;
-    margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  gap: 30px;
+  margin-left: 40px;
+  margin-top: 10px;
 }
 
 .TopBrands {
-    margin: 40px 60px 40px 60px;
+  margin: 40px 60px 40px 60px;
 }
 
 .TopBrandsSpan {
-    padding: 20px;
-    color: white;
-    font-size: 25px;
-    font-weight: 500;
-    margin-left: 100px;
+  padding: 20px;
+  color: white;
+  font-size: 25px;
+  font-weight: 500;
+  margin-left: 100px;
 }
 
 .TopBrandsList {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    margin-left: 110px;
-    margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin-left: 110px;
+  margin-top: 10px;
 }
 
-.TopBrandsList>* {
-    flex: 1 1 calc(25% - 20px);
-    margin: 10px 10px 10px 10px;
-    box-sizing: border-box;
+.TopBrandsList > * {
+  flex: 1 1 calc(25% - 20px);
+  margin: 10px 10px 10px 10px;
+  box-sizing: border-box;
 }

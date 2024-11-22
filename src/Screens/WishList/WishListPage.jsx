@@ -42,7 +42,7 @@ const WishListPage = () => {
 
   const onDeleteProduct = async (productId) => {
     try {
-      let response = deleteFromWishList(userId, productId);
+      let response = await deleteFromWishList(userId, productId);
       if (response.status === 200) {
         toastSuccess("Product Removed From WishList");
       }
@@ -68,7 +68,10 @@ const WishListPage = () => {
                 >
                   <WishListCard
                     product={item}
-                    onDeleteIconClick={() => onDeleteProduct(item.productId)}
+                    onDeleteIconClick={(event) => {
+                      event.stopPropagation();
+                      onDeleteProduct(item.productId);
+                    }}
                   />
                 </div>
               ))

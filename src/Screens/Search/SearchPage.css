@@ -1,0 +1,27 @@
+.SearchPageMainContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  /* border: 2px solid whitesmoke; */
+  height: fit-content;
+}
+
+.ProductMainContainer {
+  margin-top: 15px;
+  width: 70%;
+  /* border: 2px solid white; */
+  display: flex;
+  flex-wrap: wrap; /* Allow wrapping to new rows */
+  gap: 15px; /* Adjust gap between items */
+}
+
+.ProductContainer {
+  flex: 0 0 calc(33.33% - 10px); /* Ensure 3 items per row */
+  max-width: calc(24.5% - 10px); /* Prevent overflow */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center content within */
+  margin-bottom: 15px;
+}

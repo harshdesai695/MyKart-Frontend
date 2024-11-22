@@ -291,7 +291,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #ff4655;
+  /* background-color: #f3939b; */
   z-index: -1;
   transform: scaleX(0);
   transform-origin: left;
@@ -336,7 +336,7 @@
   transform: translateY(0);
   pointer-events: auto;
   border-top: transparent;
-  border-color: #ff4655;
+  border-color: #f3939b;
 }
 
 .menu .item:hover .link {
@@ -349,10 +349,9 @@
   transform-origin: right;
 }
 
-.menu .item:hover .link svg {
-  fill: #ff4655;
-  /* transform: rotate(-180deg); */
-}
+/* .menu .item:hover .link svg {
+  /* fill: #ff4655; */
+/* transform: rotate(-180deg);} */
 
 .submenu .submenu-item {
   width: 100%;
@@ -386,7 +385,7 @@
   transform: scaleX(0);
   width: 100%;
   height: 100%;
-  background-color: #ff4655;
+  background-color: #f3939b;
   z-index: -1;
   transform-origin: left;
   transition: transform 0.48s cubic-bezier(0.23, 1, 0.32, 1);
