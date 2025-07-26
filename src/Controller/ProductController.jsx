@@ -1,10 +1,12 @@
 import axios from "axios";
 
-// const baseURL = "http://localhost:8083/product";
-const baseURL = "http://localhost:8080/com.myKart.product/product";
+const baseURL = "http://localhost:8083/product";
+// const baseURL = "http://localhost:8080/com.myKart.product/product";
+// const baseURL = process.env.REACT_APP_REST_PRODUCT_ENDPOINT;
 
 export const getProducts = async () => {
   try {
+    // console.log("Base:", baseURL);
     const response = await axios.get(`${baseURL}/getAll`, {});
     return response;
   } catch (error) {

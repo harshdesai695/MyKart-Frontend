@@ -12,6 +12,7 @@ const NavBar = () => {
   const { isLoggedIn, logout } = useContext(AuthContext);
   const navigate = useNavigate();
   const menuItems = ["Profile", "WishList", "Cart", "Orders"];
+  const sellerMenu=["Seller Login","Seller Signup"];
 
   const handleOnClick = (pid) => {
     navigate("./Login", { state: { pid } });
@@ -25,6 +26,10 @@ const NavBar = () => {
   const handleMenuClick = (item) => {
     navigate("/" + item);
   };
+
+  const handleSellerMenuClick = (item) => {
+    navigate("/" + item);
+  }
 
   return (
     <nav className="Navbar">

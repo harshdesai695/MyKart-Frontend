@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import "./ProductCard.css";
-import { WishList, ProductCardButton } from "./CustomButtons";
+import { WishList} from "./CustomButtons";
 import { AuthContext } from "../../Auth/AuthProvider";
 import {
   addToWithList,
@@ -10,6 +10,8 @@ import StarRating from "./Rating";
 import { toastError, toastSuccess } from "./Toast";
 import { useNavigate } from "react-router-dom";
 import { isJsonObject } from "../../Function/GenericFunctions";
+import { IKImage } from "imagekitio-react";
+import { PrimaryButton } from "./CustomButtons";
 
 export const ProductCard = ({ onclick, product }) => {
   const { userId } = useContext(AuthContext);
@@ -84,10 +86,19 @@ export const ProductCard = ({ onclick, product }) => {
             }}
           />
         </div>
-        <img
+        <IKImage
+          urlEndpoint={"https://ik.imagekit.io/hhdesai/Products/"}
+          path={
+            product.productName +
+            "/" +
+            product.productImageUrl[currentImageIndex] +
+            ".jpg"
+          }
+        />
+        {/* <img
           src={product.productImageUrl[currentImageIndex]}
           alt={product.productName}
-        />
+        /> */}
       </div>
       <div className="Product-Details">
         <div className="Product-Name">{product.productName}</div>
@@ -112,7 +123,21 @@ export const ProductCard = ({ onclick, product }) => {
         </div>
       </div>
       <div className="Button-Container">
-        <ProductCardButton
+        <PrimaryButton
+          lable={"Buy"}
+          onClick={(event) => {
+            event.stopPropagation(); // Prevent click event from propagating to the parent
+            onBuyButtonclick();
+          }}
+        />
+        <PrimaryButton
+          lable={"Add To Cart"}
+          onClick={(event) => {
+            event.stopPropagation(); // Prevent click event from propagating to the parent
+            onAddToCartButtonClick();
+          }}
+        />
+        {/* <ProductCardButton
           lable={"Buy"}
           onClick={(event) => {
             event.stopPropagation(); // Prevent click event from propagating to the parent
@@ -125,7 +150,7 @@ export const ProductCard = ({ onclick, product }) => {
             event.stopPropagation(); // Prevent click event from propagating to the parent
             onAddToCartButtonClick();
           }}
-        />
+        /> */}
       </div>
     </div>
   );

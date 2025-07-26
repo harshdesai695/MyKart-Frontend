@@ -2,12 +2,22 @@ import React from "react";
 import "./cards.css";
 import StarRating from "./Rating";
 import { DeleteIconButton } from "./CustomButtons";
+import { IKImage } from "imagekitio-react";
 
-export const ImageCard = ({ imageName, imageDescription }) => {
+export const ImageCard = ({ imageName, imageDescription, onclick }) => {
   return (
-    <div className="Image-Card">
+    <div className="Image-Card" onClick={onclick}>
       <div className="ImageBox">
-        <img src={imageName + ".png"} alt="" />
+        <IKImage
+          urlEndpoint={"https://ik.imagekit.io/hhdesai/Brand_Logos/"}
+          path={imageName + ".png"}
+        />
+        {/* <img
+          src={
+            "https://ik.imagekit.io/hhdesai/Brand_Logos/" + imageName + ".png"
+          }
+          alt=""
+        /> */}
       </div>
       <div className="ImageContent">
         <h2>{imageName}</h2>
@@ -17,13 +27,25 @@ export const ImageCard = ({ imageName, imageDescription }) => {
   );
 };
 
+export const BrandCard = ({ brandName, slogan, imageUrl, onClick }) => {
+    return (
+        <div className="brand-card" onClick={onClick}>
+            <IKImage className="brand-card-image" urlEndpoint="https://ik.imagekit.io/hhdesai/Brand_Logos/" path={imageUrl} />
+            <div className="brand-card-overlay">
+                <h3>{brandName}</h3>
+                <p>{slogan}</p>
+            </div>
+        </div>
+    );
+}
+
 export const WishListCard = ({ product, onDeleteIconClick }) => {
   return (
     <div className="WishListCard">
       <div className="WishListCardImage">
-        <img
-          src={product.productImageUrl[0]}
-          alt={product.productImageUrl[0]}
+        <IKImage
+          urlEndpoint={"https://ik.imagekit.io/hhdesai/Products/"}
+          path={product.productName + "/" + product.productImageUrl[0] + ".jpg"}
         />
       </div>
       <div className="WishListCardDetails">
@@ -44,9 +66,9 @@ export const CartListCard = ({ product, onDeleteIconClick }) => {
   return (
     <div className="CartListCard">
       <div className="CartListCardImage">
-        <img
-          src={product.productImageUrl[0]}
-          alt={product.productImageUrl[0]}
+        <IKImage
+          urlEndpoint={"https://ik.imagekit.io/hhdesai/Products/"}
+          path={product.productName + "/" + product.productImageUrl[0] + ".jpg"}
         />
       </div>
       <div className="CartListtCardDetails">

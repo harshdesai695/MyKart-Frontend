@@ -1,6 +1,8 @@
 import axios from "axios";
 
 const baseURL = "http://localhost:8085/userActivity";
+// const baseURL = "http://localhost:8080/com.myKart.userActivity/userActivity";
+// const baseURL = process.env.REACT_APP_REST_USERACTIVITY_ENDPOINT;
 
 export const addToWithList = async (userId, productId) => {
   try {
@@ -64,5 +66,4 @@ export const deleteFromWishList = async (userId, productId) => {
   } catch (error) {
     console.log(error);
   }
-
-}
+};

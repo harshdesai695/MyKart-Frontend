@@ -1,13 +1,6 @@
-/* .Home-Container {} */
-
-@media screen and (max-width: 768px) {
-  .bestDealList {
-    flex-direction: column;
-  }
-}
-
+/* Keep your existing banner styles */
 .banner {
-  background-image: url("/public/banner.png");
+  background-image: url("https://ik.imagekit.io/hhdesai/Website/banner.png");
   height: 500px;
   background-size: cover;
   background-position: center center;
@@ -16,70 +9,102 @@
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
-  border-bottom: 1px solid ghostwhite;
-  /* margin-top: 10px; */
+  border-bottom: 1px solid #444;
 }
 
 .banner-prefix {
   display: flex;
   flex-direction: column;
-  justify-content: start;
-  align-items: start;
   color: white;
-  font-size: 24px;
   padding: 20px;
-  white-space: pre-wrap;
   margin-left: 60px;
 }
 
 .banner-prefix span:first-child {
   font-size: 60px;
+  font-weight: bold;
+}
+.banner-prefix span:last-child {
+  font-size: 24px;
+  color: #ccc;
 }
 
-.bestDeals {
-  margin: 40px 60px 40px 60px;
+/* NEW: Main content container for consistent spacing */
+.home-content-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
 }
 
-.bestDealsSpan {
-  padding: 20px;
-  color: white;
-  font-size: 25px;
-  font-weight: 500;
-  margin-left: 100px;
+/* NEW: Unified section and header styling */
+.home-section {
+    margin-bottom: 60px;
 }
 
-.bestDealList {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  gap: 30px;
-  margin-left: 40px;
-  margin-top: 10px;
+.section-header {
+    font-size: 28px;
+    color: #ffffff;
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #333;
 }
 
-.TopBrands {
-  margin: 40px 60px 40px 60px;
+/* NEW: Responsive grid to contain your ProductCards */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 24px;
 }
 
-.TopBrandsSpan {
-  padding: 20px;
-  color: white;
-  font-size: 25px;
-  font-weight: 500;
-  margin-left: 100px;
+/* NEW: Responsive grid for brand cards */
+.brand-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 24px;
 }
 
-.TopBrandsList {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  margin-left: 110px;
-  margin-top: 10px;
+/* NEW: Styling for the BrandCard component */
+.brand-card {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    border: 1px solid #444;
 }
 
-.TopBrandsList > * {
-  flex: 1 1 calc(25% - 20px);
-  margin: 10px 10px 10px 10px;
-  box-sizing: border-box;
+.brand-card-image {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.brand-card:hover .brand-card-image {
+    transform: scale(1.05);
+}
+
+.brand-card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0));
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.brand-card-overlay h3 {
+    font-size: 22px;
+    margin: 0 0 4px 0;
+}
+
+.brand-card-overlay p {
+    font-size: 14px;
+    color: #ccc;
+    margin: 0;
 }

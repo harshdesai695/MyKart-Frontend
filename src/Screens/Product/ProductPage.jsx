@@ -1,8 +1,8 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import "./ProductPage.css";
 import { useLocation } from "react-router-dom";
 import StarRating from "../../Components/CustomComponents/Rating";
-import { ProductCardButton } from "../../Components/CustomComponents/CustomButtons";
+import { PrimaryButton } from "../../Components/CustomComponents/CustomButtons";
 import { AuthContext } from "../../Auth/AuthProvider";
 import {
   toastError,
@@ -10,89 +10,168 @@ import {
 } from "../../Components/CustomComponents/Toast";
 import { isJsonObject } from "../../Function/GenericFunctions";
 import { addToCartList } from "../../Controller/UserActivityController";
+import { IKImage } from "imagekitio-react";
+import { getSellerDetails } from "../../Controller/SellerController";
 
 const ProductPage = () => {
   const location = useLocation();
   const { state } = location;
   const { userId } = useContext(AuthContext);
   const [selectedIndex, setSelectedIndex] = useState(0);
-  const onBuyButtonClick = () => {};
+  const [isloading, setIsLoading] = useState(true);
+  const [sellerDetails, setSellerDetails] = useState(null);
+
+  const onBuyButtonClick = () => {
+    // Add logic for buying the product
+  };
 
   const onAddToCartButtonClick = async () => {
     if (userId == null) {
       toastError("Please Login/Register to Add Products to Cart");
-    } else {
+      return;
+    }
+    try {
       let response = await addToCartList(userId, state.productData.productId);
       if (!isJsonObject(response.data)) {
         toastError(response.data);
       } else if (response.status === 200) {
         toastSuccess("Product added to Cart");
       }
+    } catch (error) {
+      toastError("Failed to add product to cart.");
+      console.error(error);
     }
   };
 
+  useEffect(() => {
+    const fetchSellerDetails = async () => {
+      setIsLoading(true);
+      if (!state.productData.sellerId) {
+        setIsLoading(false);
+        return;
+      }
+      try {
+        const response = await getSellerDetails(state.productData.sellerId);
+        if (response) {
+          setSellerDetails(response);
+        } else {
+          toastError("Could not load seller details.");
+        }
+      } catch (error) {
+        toastError("An error occurred while fetching seller details.");
+        console.error(error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchSellerDetails();
+  }, [state.productData.sellerId]);
+
   return (
     <div className="product-page">
-      {/* Product Images Section */}
-
-      <div className="Product-Small-images">
+      {/* Column 1: Small Thumbnail Images */}
+      <div className="thumbnail-column">
         {state.productData.productImageUrl.map((image, index) => (
           <div
             key={index}
-            className="image-container"
+            className={`thumbnail-container ${
+              selectedIndex === index ? "active-thumbnail" : ""
+            }`}
             onClick={() => setSelectedIndex(index)}
           >
-            <img
-              src={image}
-              alt={`${state.productData.productName} ${index + 1}`}
+            <IKImage
+              urlEndpoint={"https://ik.imagekit.io/hhdesai/Products/"}
+              path={state.productData.productName + "/" + image + ".jpg"}
             />
           </div>
         ))}
       </div>
 
-      <div className="product-images">
-        <img
-          src={state.productData.productImageUrl[selectedIndex]}
-          alt={`${state.productData.productName} `}
+      {/* Column 2: Main Product Image */}
+      <div className="main-image-column">
+        <IKImage
+          urlEndpoint={"https://ik.imagekit.io/hhdesai/Products/"}
+          path={
+            state.productData.productName +
+            "/" +
+            state.productData.productImageUrl[selectedIndex] +
+            ".jpg"
+          }
         />
       </div>
 
-      {/* Product Details Section */}
-      <div className="product-info">
-        <h1 className="product-name">{state.productData.productName}</h1>
-        <p className="brand-name">Brand: {state.productData.brandName}</p>
-        <p className="product-cost">₹{state.productData.productCost}</p>
-        <p className="product-rating">
-          Rating: <StarRating rating={state.productData.productRating} />
-        </p>
-
-        <div className="product-specs">
-          <h3>Specifications:</h3>
-          {Object.entries(state.productData.productDetails).map(
-            ([key, value]) => (
-              <li key={key}>
-                {key}: {value}
-              </li>
-            )
-          )}
-        </div>
-
-        {/* Purchase Section */}
-        <div className="purchase-section">
-          <p>Quantity Available: {state.productData.productQuantity}</p>
-          <div className="Purchase-section-buttons">
-            <ProductCardButton lable={"Buy"} onClick={onBuyButtonClick} />
-            <ProductCardButton
-              lable={"Add to Cart"}
-              onClick={(event) => {
-                event.stopPropagation();
-                onAddToCartButtonClick();
-              }}
-            />
+      {/* Column 3: All Details */}
+      <div className="details-column">
+        {/* Product Info Card */}
+        <div className="product-info-card">
+          <h1 className="product-name">{state.productData.productName}</h1>
+          <p className="brand-name">Brand: {state.productData.brandName}</p>
+          <p className="product-cost">₹{state.productData.productCost}</p>
+          <div className="product-rating">
+            <StarRating rating={state.productData.productRating} />
           </div>
 
-          {/* <button className="add-to-cart">Add to Cart</button> */}
-          {/* <button className="buy-now">Buy Now</button> */}
+          <div className="product-specs">
+            <h3>Specifications:</h3>
+            <ul>
+              {Object.entries(state.productData.productDetails).map(
+                ([key, value]) => (
+                  <li key={key}>
+                    <span>{key}:</span> {value}
+                  </li>
+                )
+              )}
+            </ul>
+          </div>
+
+          <div className="purchase-section">
+            <p>Quantity Available: {state.productData.productQuantity}</p>
+            <div className="action-buttons">
+              <PrimaryButton
+                lable={"Buy"}
+                onClick={(event) => {
+                  event.stopPropagation(); // Prevent click event from propagating to the parent
+                  onBuyButtonClick();
+                }}
+              />
+              <PrimaryButton
+                lable={"Add To Cart"}
+                onClick={(event) => {
+                  event.stopPropagation(); // Prevent click event from propagating to the parent
+                  onAddToCartButtonClick();
+                }}
+              />
+              {/* <ProductCardButton lable={"Buy"} onClick={onBuyButtonClick} />
+              <ProductCardButton
+                lable={"Add to Cart"}
+                onClick={onAddToCartButtonClick}
+              /> */}
+            </div>
+          </div>
+        </div>
+
+        {/* Seller Info Card */}
+        <div className="seller-info-card">
+          <h3>Sold By:</h3>
+          {isloading ? (
+            <p>Loading seller...</p>
+          ) : sellerDetails ? (
+            <div className="seller-card-content">
+              <img
+                src={sellerDetails.sellerLogo}
+                alt={sellerDetails.sellerName}
+                className="seller-logo"
+              />
+              <div className="seller-text-info">
+                <p className="seller-name">{sellerDetails.sellerName}</p>
+                <p className="seller-contact">{sellerDetails.sellerEmail}</p>
+                <p className="seller-contact">{sellerDetails.sellerPhoneNo}</p>
+              </div>
+            </div>
+          ) : (
+            <p>Seller information not available.</p>
+          )}
         </div>
       </div>
     </div>
