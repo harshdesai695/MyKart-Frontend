@@ -19,9 +19,6 @@ export const ProductCard = ({ onclick, product }) => {
   const [isHovering, setIsHovering] = useState(false);
   const navigate = useNavigate();
 
-  const onBuyButtonclick = () => {
-    // console.log("Buy:" + product.productId);
-  };
 
   const onAddToCartButtonClick = async () => {
     if (userId == null) {
@@ -124,16 +121,9 @@ export const ProductCard = ({ onclick, product }) => {
       </div>
       <div className="Button-Container">
         <PrimaryButton
-          lable={"Buy"}
-          onClick={(event) => {
-            event.stopPropagation(); // Prevent click event from propagating to the parent
-            onBuyButtonclick();
-          }}
-        />
-        <PrimaryButton
           lable={"Add To Cart"}
           onClick={(event) => {
-            event.stopPropagation(); // Prevent click event from propagating to the parent
+            event.stopPropagation(); 
             onAddToCartButtonClick();
           }}
         />

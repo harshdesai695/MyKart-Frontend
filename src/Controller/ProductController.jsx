@@ -7,8 +7,8 @@ const baseURL = "http://localhost:8083/product";
 export const getProducts = async () => {
   try {
     // console.log("Base:", baseURL);
-    const response = await axios.get(`${baseURL}/getAll`, {});
-    return response;
+    const response = await axios.get(`${baseURL}/all`, {});
+    return response.data;
   } catch (error) {
     throw error;
   }

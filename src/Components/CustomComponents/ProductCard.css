@@ -14,7 +14,8 @@
 }
 
 .Product-Container:hover {
-  border: 1px solid #ff4655;
+   /* border: 1px solid #ff4655; */
+  border: 1px solid #00bfa5;
   transform: scale(1.01);
   transition: 0.4s ease-in-out;
 }

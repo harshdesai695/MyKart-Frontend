@@ -12,7 +12,8 @@ const NavBar = () => {
   const { isLoggedIn, logout } = useContext(AuthContext);
   const navigate = useNavigate();
   const menuItems = ["Profile", "WishList", "Cart", "Orders"];
-  const sellerMenu=["Seller Login","Seller Signup"];
+  // Renamed for better user experience
+  const sellerMenu = ["Seller Login", "Become a Seller"];
 
   const handleOnClick = (pid) => {
     navigate("./Login", { state: { pid } });
@@ -27,9 +28,11 @@ const NavBar = () => {
     navigate("/" + item);
   };
 
-  const handleSellerMenuClick = (item) => {
-    navigate("/" + item);
-  }
+  // Updated handler for cleaner URLs (e.g., /seller-login)
+  const handleSellerMenuClick = (pid) => {
+    // const path = item.replace(" ", "");
+    navigate("./SellerLogin", { state: { pid } });
+  };
 
   return (
     <nav className="Navbar">
@@ -50,10 +53,16 @@ const NavBar = () => {
         ) : (
           <>
             <PrimaryButton
+              lable={"Seller"}
+              onClick={() => handleSellerMenuClick("SellerLogin")}
+            />
+
+            <span className="separator">|</span>
+            <PrimaryButton
               lable={"SignUp"}
               onClick={() => handleOnClick("signup")}
             />
-            <span>|</span>
+            <span className="separator-inner">|</span>
             <PrimaryButton
               lable={"Login"}
               onClick={() => handleOnClick("login")}

@@ -40,7 +40,7 @@
   font-weight: bold;
   letter-spacing: 0.05rem;
   border: 1px solid #0e1822;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 531.28 200'%3E%3Cdefs%3E%3Cstyle%3E .shape %7B fill: %23FF4655 %7D %3C/style%3E%3C/defs%3E%3Cg id='Layer_2' data-name='Layer 2'%3E%3Cg id='Layer_1-2' data-name='Layer 1'%3E%3Cpolygon class='shape' points='415.81 200 0 200 115.47 0 531.28 0 415.81 200' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E%0A");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 531.28 200'%3E%3Cdefs%3E%3Cstyle%3E .shape %7B fill: %2300bfa5 %7D %3C/style%3E%3C/defs%3E%3Cg id='Layer_2' data-name='Layer 2'%3E%3Cg id='Layer_1-2' data-name='Layer 1'%3E%3Cpolygon class='shape' points='415.81 200 0 200 115.47 0 531.28 0 415.81 200' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E%0A");
   background-color: #0e1822;
   background-size: 200%;
   background-position: 200%;
@@ -64,7 +64,8 @@
 }
 
 .primary-button:hover {
-  border: 1px solid #ff4655;
+  /* border: 1px solid #ff4655; */
+  border: 1px solid #00bfa5;
   color: white;
   background-position: 40%;
 }
@@ -91,7 +92,7 @@
 .primary-button:after {
   content: "";
   position: absolute;
-  background-color: #ff4655;
+  background-color: #00bfa5;
   width: 0.3rem;
   height: 0.3rem;
   bottom: -1px;
@@ -119,7 +120,7 @@
   height: fit-content;
   position: absolute;
   font-size: 10px;
-  color: #ff4655;
+  color: #00bfa5;
   opacity: 0;
   visibility: hidden;
   transition: 0.2s linear;
@@ -142,7 +143,7 @@
 }
 
 .WishList:hover .icon path {
-  fill: #ff4655;
+  fill: #00bfa5;
 }
 
 .WishList:hover::after {
@@ -181,7 +182,7 @@
   content: " ";
   width: 0.5625rem;
   height: 2px;
-  background: #ff4655;
+  background: #00bfa5;
   top: 50%;
   left: 1.5em;
   position: absolute;
@@ -243,7 +244,7 @@
 }
 
 .fancy:hover .text {
-  color: #ff4655;
+  color: #00bfa5;
   padding-left: 1.5em;
 }
 
@@ -291,7 +292,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  /* background-color: #f3939b; */
+  /* background-color: #00bfa5; */
   z-index: -1;
   transform: scaleX(0);
   transform-origin: left;
@@ -336,7 +337,7 @@
   transform: translateY(0);
   pointer-events: auto;
   border-top: transparent;
-  border-color: #f3939b;
+  border-color: #00bfa5;
 }
 
 .menu .item:hover .link {
@@ -350,7 +351,7 @@
 }
 
 /* .menu .item:hover .link svg {
-  /* fill: #ff4655; */
+  /* fill: #00bfa5; */
 /* transform: rotate(-180deg);} */
 
 .submenu .submenu-item {
@@ -385,7 +386,7 @@
   transform: scaleX(0);
   width: 100%;
   height: 100%;
-  background-color: #f3939b;
+  background-color: #00bfa6b7;
   z-index: -1;
   transform-origin: left;
   transition: transform 0.48s cubic-bezier(0.23, 1, 0.32, 1);

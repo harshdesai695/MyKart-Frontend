@@ -26,7 +26,7 @@ const Login = () => {
       response = await addUser(formDataObject);
     }
 
-    if (response.status === 200) {
+    if (response.success) {
       console.log("UserId:", response.data.userId);
       login(response.data.userId);
       navigate("/Home");

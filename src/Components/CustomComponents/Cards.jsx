@@ -3,6 +3,7 @@ import "./cards.css";
 import StarRating from "./Rating";
 import { DeleteIconButton } from "./CustomButtons";
 import { IKImage } from "imagekitio-react";
+import { FaMapMarkerAlt, FaEdit, FaTrash } from "react-icons/fa";
 
 export const ImageCard = ({ imageName, imageDescription, onclick }) => {
   return (
@@ -28,16 +29,20 @@ export const ImageCard = ({ imageName, imageDescription, onclick }) => {
 };
 
 export const BrandCard = ({ brandName, slogan, imageUrl, onClick }) => {
-    return (
-        <div className="brand-card" onClick={onClick}>
-            <IKImage className="brand-card-image" urlEndpoint="https://ik.imagekit.io/hhdesai/Brand_Logos/" path={imageUrl} />
-            <div className="brand-card-overlay">
-                <h3>{brandName}</h3>
-                <p>{slogan}</p>
-            </div>
-        </div>
-    );
-}
+  return (
+    <div className="brand-card" onClick={onClick}>
+      <IKImage
+        className="brand-card-image"
+        urlEndpoint="https://ik.imagekit.io/hhdesai/Brand_Logos/"
+        path={imageUrl}
+      />
+      <div className="brand-card-overlay">
+        <h3>{brandName}</h3>
+        <p>{slogan}</p>
+      </div>
+    </div>
+  );
+};
 
 export const WishListCard = ({ product, onDeleteIconClick }) => {
   return (
@@ -80,6 +85,38 @@ export const CartListCard = ({ product, onDeleteIconClick }) => {
       </div>
       <div className="MenuConatiner">
         <DeleteIconButton onClick={onDeleteIconClick} />
+      </div>
+    </div>
+  );
+};
+
+export const AddressCard = ({ address, onEdit, onDelete }) => {
+  const fullAddress = `${address.homeNo}, ${address.streetLine1}, ${
+    address.streetLine2 ? address.streetLine2 + "," : ""
+  } ${address.city}, ${address.state} - ${address.postalCode}`;
+
+  return (
+    <div className="address-card">
+      <div className="address-card-header">
+        <FaMapMarkerAlt className="address-icon" />
+        <span className="address-type-badge">{address.addressType}</span>
+      </div>
+      <div className="address-card-body">
+        <p>{fullAddress}</p>
+        <p>{address.country}</p>
+      </div>
+      <div className="address-card-actions">
+        {/* --- FIX: Wrapped in arrow function --- */}
+        <button className="address-action-btn" onClick={() => onEdit(address)}>
+          <FaEdit /> <span>Edit</span>
+        </button>
+        {/* --- FIX: Wrapped in arrow function --- */}
+        <button
+          className="address-action-btn delete"
+          onClick={() => onDelete(address)}
+        >
+          <FaTrash /> <span>Delete</span>
+        </button>
       </div>
     </div>
   );

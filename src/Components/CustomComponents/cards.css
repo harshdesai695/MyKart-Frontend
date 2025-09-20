@@ -162,3 +162,74 @@
 .MenuConatiner{
     margin:15px;
 }
+
+
+.address-card {
+  background-color: #1e1e1e;
+  border: 1px solid #555;
+  border-radius: 8px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.address-card-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.address-icon {
+  color: #00bfa5;
+  font-size: 20px;
+  margin-right: 12px;
+}
+
+.address-type-badge {
+  background-color: #444;
+  color: #e0e0e0;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.address-card-body {
+  flex-grow: 1; /* Pushes actions to the bottom */
+  font-size: 14px;
+  line-height: 1.6;
+  color: #aaa;
+}
+
+.address-card-body p {
+  margin: 0 0 5px 0;
+}
+
+.address-card-actions {
+  margin-top: 20px;
+  display: flex;
+  gap: 15px;
+}
+
+.address-action-btn {
+  background: none;
+  border: 1px solid #555;
+  color: #aaa;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s;
+}
+
+.address-action-btn:hover {
+  border-color: #00bfa5;
+  color: #00bfa5;
+}
+
+.address-action-btn.delete:hover {
+  border-color: #ff5252;
+  color: #ff5252;
+}

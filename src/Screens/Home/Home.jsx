@@ -31,7 +31,7 @@ const Home = () => {
     const fetchProducts = async () => {
       try {
         const response = await getProducts();
-        if (response.status === 200) {
+        if (response.success) {
           setProducts(response.data); 
         }
       } catch (error) {

@@ -5,7 +5,8 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  background-color: rgb(218, 216, 215);
+  background-color: #1d1d1d;
+  /* background-color: rgb(218, 216, 215); */
   position: sticky;
   z-index: 1000;
   top: 0;
@@ -42,8 +43,20 @@
 }
 
 .MyKart-Logo {
-  color: black;
+  color: rgb(194, 189, 189);
   font-size: larger;
   font-weight: 700;
   cursor: pointer;
+}
+
+.separator {
+  margin: 0 12px;
+  color: #555;
+  font-weight: 300;
+}
+
+.separator-inner {
+  margin: 0 8px;
+  color: #888;
+  font-weight: 300;
 }

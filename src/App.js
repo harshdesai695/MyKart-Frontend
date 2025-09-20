@@ -16,6 +16,7 @@ import SearchPage from "./Screens/Search/SearchPage";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ProductPage from "./Screens/Product/ProductPage";
+import SellerLogin from "./Screens/Seller/SellerLogin";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
             <Route path="/Cart" element={<Cart />}></Route>
             <Route path="/ProductPage" element={<ProductPage />}></Route>
             <Route path="/SearchPage" element={<SearchPage />}></Route>
+            <Route path="/SellerLogin" element={<SellerLogin/>}></Route>
           </Routes>
         </main>
       </Router>

@@ -42,7 +42,6 @@ const WishListPage = () => {
       const response = await deleteFromWishList(userId, productId);
       if (response.status === 200) {
         toastSuccess("Product removed from wishlist");
-        // Update state directly for a faster UI response
         setWishList(currentList => currentList.filter(item => item.productId !== productId));
       }
     } catch (error) {

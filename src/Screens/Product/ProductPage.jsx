@@ -9,7 +9,7 @@ import {
   toastSuccess,
 } from "../../Components/CustomComponents/Toast";
 import { isJsonObject } from "../../Function/GenericFunctions";
-import { addToCartList } from "../../Controller/UserActivityController";
+import { addToCartList,addToWithList } from "../../Controller/UserActivityController";
 import { IKImage } from "imagekitio-react";
 import { getSellerDetails } from "../../Controller/SellerController";
 
@@ -21,8 +21,17 @@ const ProductPage = () => {
   const [isloading, setIsLoading] = useState(true);
   const [sellerDetails, setSellerDetails] = useState(null);
 
-  const onBuyButtonClick = () => {
-    // Add logic for buying the product
+  const onWishListClick = async () => {
+    if (userId == null) {
+      toastError("Please Login/Register to WishList Your Product");
+    } else {
+      let response = await addToWithList(userId, state.product.productId);
+      if (!isJsonObject(response.data)) {
+        toastError(response.data);
+      } else if (response.status === 200) {
+        toastSuccess("Product added to wishlist");
+      }
+    }
   };
 
   const onAddToCartButtonClick = async () => {
@@ -70,7 +79,6 @@ const ProductPage = () => {
 
   return (
     <div className="product-page">
-      {/* Column 1: Small Thumbnail Images */}
       <div className="thumbnail-column">
         {state.productData.productImageUrl.map((image, index) => (
           <div
@@ -88,7 +96,6 @@ const ProductPage = () => {
         ))}
       </div>
 
-      {/* Column 2: Main Product Image */}
       <div className="main-image-column">
         <IKImage
           urlEndpoint={"https://ik.imagekit.io/hhdesai/Products/"}
@@ -101,9 +108,7 @@ const ProductPage = () => {
         />
       </div>
 
-      {/* Column 3: All Details */}
       <div className="details-column">
-        {/* Product Info Card */}
         <div className="product-info-card">
           <h1 className="product-name">{state.productData.productName}</h1>
           <p className="brand-name">Brand: {state.productData.brandName}</p>
@@ -129,24 +134,19 @@ const ProductPage = () => {
             <p>Quantity Available: {state.productData.productQuantity}</p>
             <div className="action-buttons">
               <PrimaryButton
-                lable={"Buy"}
+                lable={"Wishlist"}
                 onClick={(event) => {
-                  event.stopPropagation(); // Prevent click event from propagating to the parent
-                  onBuyButtonClick();
+                  event.stopPropagation(); 
+                  onWishListClick();
                 }}
               />
               <PrimaryButton
                 lable={"Add To Cart"}
                 onClick={(event) => {
-                  event.stopPropagation(); // Prevent click event from propagating to the parent
+                  event.stopPropagation(); 
                   onAddToCartButtonClick();
                 }}
               />
-              {/* <ProductCardButton lable={"Buy"} onClick={onBuyButtonClick} />
-              <ProductCardButton
-                lable={"Add to Cart"}
-                onClick={onAddToCartButtonClick}
-              /> */}
             </div>
           </div>
         </div>
