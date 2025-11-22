@@ -10,7 +10,7 @@ export const addToWithList = async (userId, productId) => {
       `${baseURL}/addWishList/${userId}/${productId}`,
       {}
     );
-    return response;
+    return response.data;
   } catch (error) {
     console.log(error);
   }
@@ -22,7 +22,7 @@ export const addToCartList = async (userId, productId) => {
       `${baseURL}/addCartList/${userId}/${productId}`,
       {}
     );
-    return response;
+    return response.data;
   } catch (error) {
     console.log(error);
   }
@@ -31,7 +31,7 @@ export const addToCartList = async (userId, productId) => {
 export const getWishList = async (userId) => {
   try {
     const response = await axios.get(`${baseURL}/getWishList/${userId}`);
-    return response;
+    return response.data;
   } catch (error) {
     console.log(error);
   }

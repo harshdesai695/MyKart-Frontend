@@ -23,7 +23,7 @@ const Cart = () => {
     if (!userId) return;
     try {
       const response = await getCartList(userId);
-      const cartProductIds = response.data.cartList;
+      const cartProductIds = response.data.data.cartList;
       if (cartProductIds && cartProductIds.length > 0) {
         // Create a map to count quantities of each product
         const quantityMap = cartProductIds.reduce((acc, id) => {
@@ -37,7 +37,7 @@ const Cart = () => {
 
         const productsWithQuantities = productResults.map(res => ({
           ...res.data,
-          quantity: quantityMap[res.data.productId],
+          quantity: quantityMap[res.data.data.productId],
         }));
         setCartList(productsWithQuantities);
       } else {
@@ -51,7 +51,7 @@ const Cart = () => {
   // Memoized calculation for totals
   const { subtotal, totalAmount } = useMemo(() => {
     const sub = cartList.reduce((sum, item) => {
-      const cost = parseFloat(item.productCost.toString().replace(/,/g, ""));
+      const cost = parseFloat(item.data.productCost.toString().replace(/,/g, ""));
       return sum + cost * item.quantity;
     }, 0);
     return {
@@ -96,25 +96,25 @@ const Cart = () => {
           {/* Left Column: Cart Items */}
           <div className="cart-items-column">
             {cartList.map((item) => (
-              <div key={item.productId} className="cart-item-card">
+              <div key={item.data.productId} className="cart-item-card">
                 <IKImage
                   className="cart-item-image"
                   urlEndpoint={"https://ik.imagekit.io/hhdesai/Products/"}
-                  path={`${item.productName}/${item.productImageUrl[0]}.jpg`}
-                  onClick={() => onProductCardClick(item)}
+                  path={`${item.data.productName}/${item.data.productImageUrl[0]}.jpg`}
+                  onClick={() => onProductCardClick(item.data)}
                 />
                 <div className="cart-item-details">
-                  <h3 className="cart-item-name" onClick={() => onProductCardClick(item)}>{item.productName}</h3>
-                  <p className="cart-item-brand">Brand: {item.brandName}</p>
+                  <h3 className="cart-item-name" onClick={() => onProductCardClick(item)}>{item.data.productName}</h3>
+                  <p className="cart-item-brand">Brand: {item.data.brandName}</p>
                   <div className="quantity-selector">
-                    <button onClick={() => handleQuantityChange(item.productId, -1)}>-</button>
+                    <button onClick={() => handleQuantityChange(item.data.productId, -1)}>-</button>
                     <span>{item.quantity}</span>
-                    <button onClick={() => handleQuantityChange(item.productId, 1)}>+</button>
+                    <button onClick={() => handleQuantityChange(item.data.productId, 1)}>+</button>
                   </div>
                 </div>
                 <div className="cart-item-price-actions">
-                   <p className="cart-item-price">₹{(parseFloat(item.productCost.toString().replace(/,/g, "")) * item.quantity).toLocaleString()}</p>
-                   <button className="cart-item-delete-btn" onClick={() => onDeleteProduct(item.productId)}>
+                   <p className="cart-item-price">₹{(parseFloat(item.data.productCost.toString().replace(/,/g, "")) * item.quantity).toLocaleString()}</p>
+                   <button className="cart-item-delete-btn" onClick={() => onDeleteProduct(item.data.productId)}>
                      <FaTrashAlt />
                    </button>
                 </div>

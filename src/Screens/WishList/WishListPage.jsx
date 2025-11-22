@@ -27,7 +27,7 @@ const WishListPage = () => {
       if (wishlistProductIds && wishlistProductIds.length > 0) {
         const productPromises = wishlistProductIds.map(id => getProduct(id));
         const productResults = await Promise.all(productPromises);
-        setWishList(productResults.map(res => res.data));
+        setWishList(productResults.map(res => res.data.data));
       } else {
         setWishList([]); // Clear wishlist if it's empty
       }
