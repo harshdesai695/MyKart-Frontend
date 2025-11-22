@@ -23,11 +23,11 @@ const WishListPage = () => {
     if (!userId) return;
     try {
       const response = await getWishList(userId);
-      const wishlistProductIds = response.data.wishList;
+      const wishlistProductIds = response.data.data.wishList;
       if (wishlistProductIds && wishlistProductIds.length > 0) {
         const productPromises = wishlistProductIds.map(id => getProduct(id));
         const productResults = await Promise.all(productPromises);
-        setWishList(productResults.map(res => res.data.data));
+        setWishList(productResults.map(res => res.data));
       } else {
         setWishList([]); // Clear wishlist if it's empty
       }

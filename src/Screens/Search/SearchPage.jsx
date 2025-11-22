@@ -8,7 +8,7 @@ import "./SearchPage.css";
 
 const SearchPage = () => {
   const location = useLocation();
-  const [product, setproduct] = useState(null);
+  const [product, setProduct] = useState(null);
   const [isloding, setIsLoding] = useState(true);
   const { state } = location;
   useEffect(() => {
@@ -18,8 +18,8 @@ const SearchPage = () => {
   const getProductbyBrand = async () => {
     let response = null;
     response = await getProductByBrandName(state.brandName);
-    if (response.status === 200) {
-      setproduct(response.data);
+    if (response.success) {
+      setProduct(response.data);
       setIsLoding(false);
     }
   };

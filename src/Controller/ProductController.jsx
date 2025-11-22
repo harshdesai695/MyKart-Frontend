@@ -1,13 +1,11 @@
-import axios from "axios";
+import api from "./api"; 
 
-const baseURL = "http://localhost:8083/product";
-// const baseURL = "http://localhost:8080/com.myKart.product/product";
-// const baseURL = process.env.REACT_APP_REST_PRODUCT_ENDPOINT;
+
+const baseURL = "/product";
 
 export const getProducts = async () => {
   try {
-    // console.log("Base:", baseURL);
-    const response = await axios.get(`${baseURL}/all`, {});
+    const response = await api.get(`${baseURL}/all`);
     return response.data;
   } catch (error) {
     throw error;
@@ -16,8 +14,8 @@ export const getProducts = async () => {
 
 export const getProduct = async (productId) => {
   try {
-    const response = await axios.get(`${baseURL}/${productId}`);
-    return response;
+    const response = await api.get(`${baseURL}/${productId}`);
+    return response.data; 
   } catch (error) {
     throw error;
   }
@@ -25,10 +23,10 @@ export const getProduct = async (productId) => {
 
 export const getProductByBrandName = async (brandName) => {
   try {
-    const response = await axios.get(
+    const response = await api.get(
       `${baseURL}/getProductByBrand/${brandName}`
     );
-    return response;
+    return response.data;
   } catch (error) {
     throw error;
   }

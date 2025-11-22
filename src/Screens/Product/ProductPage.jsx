@@ -9,9 +9,12 @@ import {
   toastSuccess,
 } from "../../Components/CustomComponents/Toast";
 import { isJsonObject } from "../../Function/GenericFunctions";
-import { addToCartList,addToWithList } from "../../Controller/UserActivityController";
+import {
+  addToCartList,
+  addToWithList,
+} from "../../Controller/UserActivityController";
 import { IKImage } from "imagekitio-react";
-import { getSellerDetails } from "../../Controller/SellerController";
+import { getSeller } from "../../Controller/SellerController";
 
 const ProductPage = () => {
   const location = useLocation();
@@ -25,10 +28,12 @@ const ProductPage = () => {
     if (userId == null) {
       toastError("Please Login/Register to WishList Your Product");
     } else {
-      let response = await addToWithList(userId, state.product.productId);
+      let response = await addToWithList(userId, state.productData.productId);
       if (!isJsonObject(response.data)) {
-        toastError(response.data);
-      } else if (response.status === 200) {
+        toastError(response.data.data);
+      } else if (response.data.data === "Item Already Present in WishList") {
+        toastSuccess(response.data.data);
+      } else if (response.status === 201) {
         toastSuccess("Product added to wishlist");
       }
     }
@@ -37,45 +42,43 @@ const ProductPage = () => {
   const onAddToCartButtonClick = async () => {
     if (userId == null) {
       toastError("Please Login/Register to Add Products to Cart");
-      return;
-    }
-    try {
+    } else {
       let response = await addToCartList(userId, state.productData.productId);
       if (!isJsonObject(response.data)) {
-        toastError(response.data);
-      } else if (response.status === 200) {
-        toastSuccess("Product added to Cart");
+        toastError(response.data.data);
+      } else if (response.data.data === "Item Already Present in Cart") {
+        toastSuccess(response.data.data);
+      } else if (response.status === 201) {
+        toastSuccess("Cart Updated Successfully");
       }
-    } catch (error) {
-      toastError("Failed to add product to cart.");
-      console.error(error);
     }
   };
 
   useEffect(() => {
-    const fetchSellerDetails = async () => {
-      setIsLoading(true);
-      if (!state.productData.sellerId) {
-        setIsLoading(false);
-        return;
-      }
-      try {
-        const response = await getSellerDetails(state.productData.sellerId);
-        if (response) {
-          setSellerDetails(response);
-        } else {
-          toastError("Could not load seller details.");
-        }
-      } catch (error) {
-        toastError("An error occurred while fetching seller details.");
-        console.error(error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
     fetchSellerDetails();
   }, [state.productData.sellerId]);
+
+  const fetchSellerDetails = async () => {
+    setIsLoading(true);
+    console.log("Fetching seller details for ID:", state.productData.sellerId);
+    // if (!state.productData.sellerId) {
+    //   setIsLoading(false);
+    //   return;
+    // }
+    try {
+      const response = await getSeller(state.productData.sellerId);
+      if (response) {
+        setSellerDetails(response.data);
+      } else {
+        toastError("Could not load seller details.");
+      }
+    } catch (error) {
+      toastError("An error occurred while fetching seller details.");
+      // console.error(error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <div className="product-page">
@@ -136,14 +139,14 @@ const ProductPage = () => {
               <PrimaryButton
                 lable={"Wishlist"}
                 onClick={(event) => {
-                  event.stopPropagation(); 
+                  event.stopPropagation();
                   onWishListClick();
                 }}
               />
               <PrimaryButton
                 lable={"Add To Cart"}
                 onClick={(event) => {
-                  event.stopPropagation(); 
+                  event.stopPropagation();
                   onAddToCartButtonClick();
                 }}
               />

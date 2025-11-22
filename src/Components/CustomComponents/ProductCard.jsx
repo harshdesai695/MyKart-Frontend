@@ -26,9 +26,11 @@ export const ProductCard = ({ onclick, product }) => {
     } else {
       let response = await addToCartList(userId, product.productId);
       if (!isJsonObject(response.data)) {
-        toastError(response.data);
-      } else if (response.status === 200) {
-        toastSuccess("Product added to Cart");
+        toastError(response.data.data);
+      } else if (response.data.data === "Item Already Present in Cart") {
+        toastSuccess(response.data.data);
+      }else if (response.status === 201) {
+        toastSuccess("Cart Updated Successfully");
       }
     }
   };
@@ -39,8 +41,10 @@ export const ProductCard = ({ onclick, product }) => {
     } else {
       let response = await addToWithList(userId, product.productId);
       if (!isJsonObject(response.data)) {
-        toastError(response.data);
-      } else if (response.status === 200) {
+        toastError(response.data.data);
+      }else if (response.data.data === "Item Already Present in WishList") {
+        toastSuccess(response.data.data);
+      } else if (response.status === 201) {
         toastSuccess("Product added to wishlist");
       }
     }

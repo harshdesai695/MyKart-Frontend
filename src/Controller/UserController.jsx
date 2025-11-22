@@ -1,16 +1,12 @@
-import axios from "axios";
+import api from "./api";
 
-const baseURL = "http://localhost:8081/user";
-const baseURLAddress = "http://localhost:8081/user/address";
-// const baseURL = "http://localhost:8080/com.myKart.user/user";
-// const baseURL = process.env.REACT_APP_REST_USER_ENDPOINT;
+
+const baseURL = "/user";
+const baseURLAddress = "/user/address";
 
 export const loginUser = async (formData) => {
   try {
-    // const request = {
-    //   requestBody: formData,
-    // };
-    const response = await axios.post(`${baseURL}/login`, formData);
+    const response = await api.post(`${baseURL}/login`, formData);
     return response.data;
   } catch (error) {
     throw error;
@@ -19,11 +15,8 @@ export const loginUser = async (formData) => {
 
 export const addUser = async (formData) => {
   try {
-    const request = {
-      requestBody: formData,
-    };
-    const response = await axios.post(`${baseURL}/addUser`, request);
-    return response;
+    const response = await api.post(`${baseURL}/addUser`, formData);
+    return response.data; 
   } catch (error) {
     throw error;
   }
@@ -31,7 +24,7 @@ export const addUser = async (formData) => {
 
 export const getUser = async (UserId) => {
   try {
-    const response = await axios.get(`${baseURL}/getUser/${UserId}`, {});
+    const response = await api.get(`${baseURL}/getUser/${UserId}`);
     return response.data;
   } catch (error) {
     throw error;
@@ -47,10 +40,8 @@ export const updateProfile = async (UserId, updateType, formData) => {
       },
       requestBody: formData,
     };
-    // console.log("Update Request:", request)
-    const response = await axios.post(`${baseURL}/update`, request);
-    // console.log("Response", response)
-    return response;
+    const response = await api.post(`${baseURL}/update`, request);
+    return response.data;
   } catch (error) {
     throw error;
   }
@@ -58,10 +49,7 @@ export const updateProfile = async (UserId, updateType, formData) => {
 
 export const getUserAddress = async (UserId) => {
   try {
-    const response = await axios.get(
-      `${baseURLAddress}/get/${UserId}`,
-      {}
-    );
+    const response = await api.get(`${baseURLAddress}/get/${UserId}`);
     return response.data;
   } catch (error) {
     throw error;
@@ -70,19 +58,16 @@ export const getUserAddress = async (UserId) => {
 
 export const deleteUserAddress = async (address) => {
   try {
-    const response = await axios.delete(`${baseURLAddress}/delete/${address.addressId}`,)
+    const response = await api.delete(`${baseURLAddress}/delete/${address.addressId}`);
     return response.data;
   } catch (error) {
     throw error;
   }
 };
 
-export const addUserAddress = async (address,userId) => {
+export const addUserAddress = async (address, userId) => {
   try {
-    // const request = {
-    //   requestBody: address,
-    // };
-    const response = await axios.post(`${baseURLAddress}/add/${userId}`, address);
+    const response = await api.post(`${baseURLAddress}/add/${userId}`, address);
     return response.data;
   } catch (error) {
     throw error;

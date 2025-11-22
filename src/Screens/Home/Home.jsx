@@ -63,8 +63,7 @@ const Home = () => {
           <div className="product-grid">
             {isLoading
               ? Array.from({ length: 5 }).map((_, index) => <SkeletonProductLoader key={index} />)
-              : products.map((item) => (
-                  // Using your original ProductCard component
+              : products.slice(0, 8).map((item) => (
                   <ProductCard key={item.productId} product={item} />
                 ))}
           </div>
