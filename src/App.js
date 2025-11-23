@@ -26,7 +26,7 @@ function App() {
         <NavBar />
         <main className="main-content">
           <Routes>
-            <Route path="/" element={<Navigate to="/Home" replace />} />
+            <Route path="/" element={<Home />} />
             <Route path="/Home" element={<Home />}></Route>
             <Route path="/Login" element={<Login />}></Route>
             <Route path="/WishList" element={<WishListPage />}></Route>

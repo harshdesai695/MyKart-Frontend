@@ -31,3 +31,12 @@ export const getProductByBrandName = async (brandName) => {
     throw error;
   }
 };
+
+export const searchProducts = async (keyword) => {
+  try {
+    const response = await api.get(`${baseURL}/search/${keyword}`);
+    return response.data;
+  } catch (error) {
+    return { success: false, data: [] };
+  }
+};
